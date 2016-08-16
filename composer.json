@@ -1,0 +1,25 @@
+{
+    "name": "ivanamat/cakephp3-documents",
+    "description": "CakePHP 3.x - Markdown Documents",
+    "keywords": ["cakephp", "cakephp3", "cake3", "plugin", "markdown", "documents", "parsedown", "extra"],
+    "homepage": "https://github.com/ivanamat/cakephp3-documents",
+    "type": "cakephp-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ivan Amat",
+            "homepage": "http://www.ivanamat.es",
+            "role": "Author"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0",
+        "ivanamat/cakephp3-markdown": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Documents\\": "src"
+        }
+    }
+}
