@@ -100,7 +100,7 @@ CakePHP 3.x - Markdown Documents require [CakePHP 3.x - Markdown](https://github
 
 ### Friendly URLs!
 
-The `URLs` generated are all `friendly`.
+The **URLs** generated are all **friendly**.
 
 Example: http://www.example.com/Documents/tutorials/cakephp/plugins/cakephp-3-x-documents
 
