@@ -77,12 +77,9 @@ class DocumentsHelper extends Helper {
         $documents = [];
         
         $childs =  $this->Categories->find('children',['for' => $categoryId]);
-        
-        if(count($childs->toArray()) > 0) {
-            foreach ($childs as $k => $v):
-                array_push($ids, $k);
+            foreach ($childs as $child):
+                array_push($ids, $child->id);
             endforeach;
-        }
         
         if(count($ids) > 0) {
             $documents = $this->Documents->find('all')->where(['category_id IN' => $ids])->toArray();
