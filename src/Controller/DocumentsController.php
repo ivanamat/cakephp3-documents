@@ -90,8 +90,10 @@ class DocumentsController extends AppController {
 
         if($document == null && $category != null) {
             $documents = $this->Documents->find('all')->where(['category_id' => $category->id])->toArray();
-            $this->set(compact('documents'));
-            $this->set('_serialize', ['documents']);
+            if(count($documents) > 0) {
+                $this->set(compact('documents'));
+                $this->set('_serialize', ['documents']);
+            }
             
             $this->render('index');
         }

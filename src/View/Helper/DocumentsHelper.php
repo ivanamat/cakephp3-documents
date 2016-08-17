@@ -55,7 +55,11 @@ class DocumentsHelper extends Helper {
         }
         return null;
     }
-
+    
+    public function getCategory($id) {
+        return $this->Categories->find('all')->where(['id' => $id])->first();
+    }
+    
     public function getParentSlug($slug) {
         $slug = explode('/', $slug);
         
