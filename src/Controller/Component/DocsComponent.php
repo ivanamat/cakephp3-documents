@@ -87,5 +87,7 @@ class DocsComponent extends Component {
         if(count($ids) > 0) {
             $documents = $this->Documents->find('all')->where(['category_id IN' => $ids])->toArray();
         }
+        
+        return $documents;
     }
 }
