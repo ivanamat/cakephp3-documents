@@ -86,7 +86,9 @@ if($title != null) {
     # Show related documents
     if(!isset($document) && !isset($documents) && isset($category)) {
         $documents = $this->Documents->getRelatedDocuments($category->id);
-        echo $this->element('documents',['title' => __('Related documents'), 'documents' => $documents, 'related' => true]);
+        if(count($documents) > 0) {
+            echo $this->element('documents',['title' => __('Related documents'), 'documents' => $documents, 'related' => true]);
+        }
     }
     
     # Show 'create document' advice
