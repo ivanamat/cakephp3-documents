@@ -60,14 +60,5 @@ if($title != null) {
 </nav>
 
 <div class="documents view large-9 medium-8 columns content">
-    <h1 class="left"><?php echo $document->title; ?></h1>
-    <div class="right">
-        <?php echo $this->Html->link(__('Edit'), ['controller' => false,'action' => 'edit', $document->id],['class' => 'button']); ?> 
-        <?php echo $this->Form->postLink(__('Delete'), 
-            ['plugin' => 'Documents', 'controller' => false, 'action' => 'delete', $document->id], 
-            ['class' => 'button alert','confirm' => __('Are you sure you want to delete {0}?', $document->title)]); ?>
-    </div>
-    <div class="clearfix"></div>
-    <hr />
-    <?php echo $this->Markdown->parse($document->body); ?>
+    <?php echo $this->element('document'); ?>
 </div>

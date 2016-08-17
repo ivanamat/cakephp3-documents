@@ -61,48 +61,40 @@ if($title != null) {
 </nav>
 
 <div class="documents index large-9 medium-8 columns content">
-    <?php 
+    <?php
+    # Category
     if(isset($category)) {
         echo '<h1 class="left">'.$category->name.'</h1>';
-            echo '<div class="right">' . $this->Html->link(__('New document'),['controller' => false, 'action' => 'add',$category->id],['class' => 'button']) . '</div>';
+            # Create document button
+            if($this->request->session()->check('Auth.User.id') && $this->AclManager->check(['Users' => ['id' => $this->request->session()->read('Auth.User.id')]],'controllers/Documents/Documents/add')) {
+                echo '<div class="right">' . $this->Html->link(__('New document'),['controller' => false, 'action' => 'add',$category->id],['class' => 'button']) . '</div>';
+            }
             echo '<div class="clearfix"></div>';
         echo '<hr />';
     }
+    
+    # Document
+    if (isset($document)) {
+        echo $this->element('document');
+    }
 
-    if ($document != null) {
-        ?>
-        <h1 class="left"><?php echo $document->title; ?></h1>
-        <?php if($document->id != 0): ?>
-        <div class="right">
-            <?php echo $this->Html->link(__('Edit'), ['controller' => false,'action' => 'edit', $document->id],['class' => 'button']); ?> 
-            <?php echo $this->Form->postLink(__('Delete'), 
-                ['plugin' => 'Documents', 'controller' => false, 'action' => 'delete', $document->id], 
-                ['class' => 'button alert','confirm' => __('Are you sure you want to delete {0}?', $document->title)]); ?>
-        </div>
-        <?php endif; ?>
-        <div class="clearfix"></div>
-        <hr />
-        <?php 
-        echo $this->Markdown->parse($document->body);
+    # Documents
+    if(isset($documents)) {
+        echo $this->element('documents');
+    }
+
+    # Show related documents
+    if(!isset($document) && !isset($documents) && isset($category)) {
+        $documents = $this->Documents->getRelatedDocuments($category->id);
+        echo $this->element('documents',['title' => __('Related documents'), 'documents' => $documents, 'related' => true]);
     }
     
-    if ($document == null && !isset($documents) || $document == null && count($documents) == 0) {
+    # Show 'create document' advice
+    if (!isset($document) && !isset($documents)) {
         $element = ($params['controller'] == 'Documents' && 
                 $params['action'] == 'index') ? 'add_index' : 'add_document' ;
         echo $this->element($element);
     }
     ?>
-    <?php if(isset($documents) && $documents != null): ?>
-        <h3>Documents</h3>
-        <?php if(isset($documents) && $documents != null): ?>
-            <ul class="side-nav">
-            <?php foreach ($documents as $document): ?>
-                <li><?php echo $this->Html->link($document->title, DS.$this->request->params['controller'].DS.$document->slug); ?></li>
-            <?php endforeach; ?>
-            </ul>
-        <?php else: ?>
-                <p><?php echo __('No documents'); ?></p>
-        <?php endif; ?>
-    <?php endif; ?>
     
 </div>
