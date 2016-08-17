@@ -67,4 +67,25 @@ class DocumentsHelper extends Helper {
         
         return $slug;
     }
+    
+    public function getRelatedDocuments($categoryId) {
+        if(!is_int($categoryId)) {
+            return false;
+        }
+        
+        $ids = [];
+        $documents = [];
+        
+        $childs =  $this->Categories->find('children',['for' => $categoryId]);
+        
+        if(count($childs->toArray()) > 0) {
+            foreach ($childs as $k => $v):
+                array_push($ids, $k);
+            endforeach;
+        }
+        
+        if(count($ids) > 0) {
+            $documents = $this->Documents->find('all')->where(['category_id IN' => $ids])->toArray();
+        }
+    }
 }
