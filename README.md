@@ -100,8 +100,6 @@ If the ACL plugin is loaded, you can set action's permissions.
 
 ## Component and Helper
 
-### Documents include a component and a helper
-
 Documents has a component named DocsComponent and a helper named DocsHelper, both with the same methods.
 
 ## Methods
