@@ -1,7 +1,7 @@
 <?php
 
 /**
- * CakePHP 3.x - MD Documents
+ * CakePHP 3.x - Markdown Documents
  * 
  * PHP version 5
  * 
@@ -17,7 +17,7 @@
  * @author Ivan Amat <dev@ivanamat.es>
  * @copyright Copyright 2016, Iván Amat
  * @license MIT http://opensource.org/licenses/MIT
- * @link https://github.com/ivanamat/cakephp3-markdown
+ * @link https://github.com/ivanamat/cakephp3-documents
  */
 
 namespace Documents\Controller\Component;

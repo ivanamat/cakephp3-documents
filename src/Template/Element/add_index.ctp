@@ -1,3 +1,23 @@
+<?php
+/**
+ * CakePHP 3.x - Markdown Documents
+ * 
+ * PHP version 5
+ * 
+ * File Element/add_index.ctp
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @category CakePHP3
+ * 
+ * @author Ivan Amat <dev@ivanamat.es>
+ * @copyright Copyright 2016, Iván Amat
+ * @license MIT http://opensource.org/licenses/MIT
+ * @link https://github.com/ivanamat/cakephp3-documents
+ */
+?>
+
 <div class="panel info">
     <div class="panel-body">
         <h2><?php echo __('Create your index or home page for Documents'); ?></h2>

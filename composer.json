@@ -15,7 +15,7 @@
     "require": {
         "php": ">=5.4.16",
         "cakephp/cakephp": "~3.0",
-        "ivanamat/cakephp3-markdown": "dev-master"
+        "ivanamat/cakephp3-markdown": "~1.0"
     },
     "autoload": {
         "psr-4": {
