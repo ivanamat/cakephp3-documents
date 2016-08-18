@@ -111,7 +111,7 @@ Yes, I will think rename the component and the helper later.
 
 ## Methods
 
-The examples has been written `using the helper`.
+The examples has been written using the helper. Note this `$this->Documents->method()`.
 
 ### slugCategory($id)
 
