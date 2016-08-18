@@ -20,6 +20,10 @@ composer require ivanamat/cakephp3-documents
     git submodule update
 ```
 
+### Manual installation
+
+Download the .zip or .tar.gz file, unzip and rename the plugin folder "cakephp3-documents" to "Documents" then copy the folder to your plugins folder.
+
 ## Configuration
 
 ### Load plugin
@@ -94,6 +98,83 @@ If the ACL plugin is loaded, you can set action's permissions.
     Configure::write('Documents.auth.allow', ['index','view']);
 ```
 
+## Component and Helper
+
+### Documents include a component and a helper
+
+Documents include a component and a helper, both with the same methods.
+
+* DocsComponent
+* DocumentsHelper
+
+Yes, I will think rename the component and the helper later.
+
+## Methods
+
+The examples has been written `using the helper`.
+
+### slugCategory($id)
+
+**$id** int Category id
+
+**return** string Returns category slug
+
+```php
+    $slug = $this->Documents->slugCategory($id);
+    # Example $slug value: 'proyectos/cakephp/plugins'
+    echo '<a href="/' . $this->plugin . DS . $slug . '"><strong>'.$category->title.'</strong></a>';
+```
+     
+### slugDocument($id)
+
+**$id** int
+
+**return** string Returns document slug
+
+```php
+    $slug = $this->Documents->slugDocument($id);
+    # Example $slug value: 'proyectos/cakephp/plugins/cakephp-3-x-markdown-documents'
+    echo '<a href="/' . $this->plugin . DS . $slug . '"><strong>'.$document->title.'</strong></a>';
+```
+     
+### getCategory($id)
+
+**$id** int Category id
+
+**return** object Category
+
+```php
+    $category = $this->Documents->getCategory($id);
+    echo '<h2>'.$category->title.'</h2>';
+```
+### getParentSlug($slug)
+
+**$slug** string Slug
+
+**return** string Parent slug
+
+```php
+    # $slug = 'projects/cakephp/plugins/cakephp-3-x-markdown-documents'
+    $parentSlug = $this->Documents->getParentSlug($slug);
+    # $parentSlug will output 'projects/cakephp/plugins'
+    echo '<a href="/' . $this->plugin . DS . $parentSlug . '"><strong>Parent category</strong></a>';
+```
+
+### getRelatedDocuments($id)
+
+**$id** int Category id
+
+**return** array Array of documents from categories children of the specified category
+
+```php
+    $relatedDocuments = $this->Documents->getParentSlug($slug);
+    foreach($relatedDocuments as $document) {
+        echo '<h4>' . $document->title . '</h4>';
+        echo $this->Markdown->parse($document->body);
+    }
+```
+
+     
 ## About CakePHP 3.x - Markdown Documents
 
 CakePHP 3.x - Markdown Documents require [CakePHP 3.x - Markdown](https://github.com/ivanamat/cakephp3-markdown) plugin.
