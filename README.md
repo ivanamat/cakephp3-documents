@@ -102,16 +102,9 @@ If the ACL plugin is loaded, you can set action's permissions.
 
 ### Documents include a component and a helper
 
-Documents include a component and a helper, both with the same methods.
-
-* DocsComponent
-* DocumentsHelper
-
-Yes, I will think rename the component and the helper later.
+Documents has a component named DocsComponent and a helper named DocsHelper, both with the same methods.
 
 ## Methods
-
-The examples has been written using the helper. Note this `$this->Documents->method()`.
 
 ### slugCategory($id)
 
@@ -120,7 +113,7 @@ The examples has been written using the helper. Note this `$this->Documents->met
 **return** string Returns category slug
 
 ```php
-    $slug = $this->Documents->slugCategory($id);
+    $slug = $this->Docs->slugCategory($id);
     # Example $slug value: 'proyectos/cakephp/plugins'
     echo '<a href="/' . $this->plugin . DS . $slug . '"><strong>'.$category->title.'</strong></a>';
 ```
@@ -132,7 +125,7 @@ The examples has been written using the helper. Note this `$this->Documents->met
 **return** string Returns document slug
 
 ```php
-    $slug = $this->Documents->slugDocument($id);
+    $slug = $this->Docs->slugDocument($id);
     # Example $slug value: 'proyectos/cakephp/plugins/cakephp-3-x-markdown-documents'
     echo '<a href="/' . $this->plugin . DS . $slug . '"><strong>'.$document->title.'</strong></a>';
 ```
@@ -144,7 +137,7 @@ The examples has been written using the helper. Note this `$this->Documents->met
 **return** object Category
 
 ```php
-    $category = $this->Documents->getCategory($id);
+    $category = $this->Docs->getCategory($id);
     echo '<h2>'.$category->title.'</h2>';
 ```
 ### getParentSlug($slug)
@@ -155,7 +148,7 @@ The examples has been written using the helper. Note this `$this->Documents->met
 
 ```php
     # $slug = 'projects/cakephp/plugins/cakephp-3-x-markdown-documents'
-    $parentSlug = $this->Documents->getParentSlug($slug);
+    $parentSlug = $this->Docs->getParentSlug($slug);
     # $parentSlug will output 'projects/cakephp/plugins'
     echo '<a href="/' . $this->plugin . DS . $parentSlug . '"><strong>Parent category</strong></a>';
 ```
@@ -167,7 +160,7 @@ The examples has been written using the helper. Note this `$this->Documents->met
 **return** array Array of documents from categories children of the specified category
 
 ```php
-    $relatedDocuments = $this->Documents->getParentSlug($slug);
+    $relatedDocuments = $this->Docs->getParentSlug($slug);
     foreach($relatedDocuments as $document) {
         echo '<h4>' . $document->title . '</h4>';
         echo $this->Markdown->parse($document->body);
