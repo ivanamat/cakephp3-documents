@@ -54,10 +54,10 @@ class CategoriesController extends AppController
     {
         $results = $this->Categories->find('all')->order(['lft' => 'ASC']);
         $categories = $results->find('treeList',['spacer' => '&nbsp;&nbsp;&nbsp;&nbsp;']);
-//        $parentCategories = $this->Categories->ParentCategories->find('treeList',['spacer' => '&nbsp;&nbsp;&nbsp;&nbsp;']);
+        $category = $this->Categories->newEntity();
         
-        $this->set(compact('categories'));
-        $this->set('_serialize', ['categories']);
+        $this->set(compact('categories','category'));
+        $this->set('_serialize', ['categories','category']);
     }
 
     /**
